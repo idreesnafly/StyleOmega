@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_Cart"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="My Cart" />
+        <item
+            android:id="@+id/nav_Account"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="My Account" />
+        <item
+            android:id="@+id/nav_PastOrders"
+            android:icon="@drawable/ic_bookmark_border_black_24dp"
+            android:title="Past orders" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_Inquiries"
+                android:icon="@drawable/info"
+                android:title="Inquiries" />
+            <item
+                android:id="@+id/ContactUS"
+                android:icon="@drawable/ic_local_phone_black_24dp"
+                android:title="Contact Us" />
+            <item
+                android:id="@+id/nav_Signout"
+                android:icon="@drawable/signout"
+                android:title="Sign Out"/>
+
+        </menu>
+    </item>
+
+
+</menu>

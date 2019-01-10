@@ -4,7 +4,8 @@
 
 <item>
     <bitmap android:src="@drawable/coollogo"
-        android:gravity="center"/>
+        android:gravity="center"
+        />
 </item>
 
 </layer-list>

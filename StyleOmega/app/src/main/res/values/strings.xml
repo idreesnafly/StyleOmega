@@ -3,7 +3,7 @@
     <string name="app_name">StyleOmega</string>
     <string name="username">Username</string>
     <string name="log_in">Log In</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="don_t_have_an_account">Don\'t have an account? Sign up today</string>
     <string name="email">Email</string>
     <string name="name">Name</string>
     <string name="sign_up">SIGN UP</string>
@@ -24,7 +24,19 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="title_activity_homepage">Homepage</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_productpage">productpage</string>
+    <string name="title_activity_lsitviewact">lsitviewact</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

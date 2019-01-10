@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/titleheader"
+        android:title="Profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        >
+
+    </item>
+
+    <item
+        android:id="@+id/titleheader2"
+        android:title="My Cart"
+        >
+
+    </item>
+
+    <item
+        android:id="@+id/titleheader3"
+        android:title="Contact Us"
+        >
+
+    </item>
+</menu>

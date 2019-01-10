@@ -4,23 +4,29 @@
     package="com.example.idrees.styleomega">
 
     <application
+        android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@drawable/roundlogo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/roundlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="com.orm.SugarApp"
         tools:replace="android:icon">
-
-
-        <meta-data android:name="DATABASE" android:value="styleOmega.db" />
-        <meta-data android:name="VERSION" android:value="2" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.idrees.styleomega.Model" />
+        <meta-data
+            android:name="DATABASE"
+            android:value="styleOmega.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="5" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example.idrees.styleomega.Model" />
 
         <activity
-            android:name=".SplashScreen"
+            android:name=".Activities.SplashScreen"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +34,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignIn" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".HomeScreen" />
-        <activity android:name=".ItemsScreen" />
-        <activity android:name=".DetailedItemsScreen" />
-        <activity android:name=".ShoppingCart" />
-        <activity android:name=".CheckoutScreen" />
+        <activity
+            android:name=".Activities.SignIn"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.SignUp"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.DetailedItemsScreen" />
+        <activity android:name=".Activities.ShoppingCart" />
+        <activity android:name=".Activities.CheckoutScreen" />
+        <activity
+            android:name=".Activities.Homepage"
+            android:label="@string/title_activity_homepage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.productpage"
+            android:label="@string/title_activity_productpage"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
