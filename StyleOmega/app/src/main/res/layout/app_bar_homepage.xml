@@ -8,6 +8,7 @@
 
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -28,8 +29,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_homepage" />
-
+    <include
+        layout="@layout/content_homepage"
+        app:layout_anchor="@+id/constraintLayout"
+        app:layout_anchorGravity="right|bottom" />
 
 
 </android.support.design.widget.CoordinatorLayout>

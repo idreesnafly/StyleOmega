@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="Color_prompt">Choose color</string>
+
+    <string name="ChooseSize">Choose Size</string>
+
+    <string-array name="color_arrays">
+        <item>Black</item>
+        <item>White</item>
+        <item>Grey</item>
+        <item>Blue</item>
+        <item>Pink</item>
+        <item>Red</item>
+        <item>Yellow</item>
+    </string-array>
+
+    <string-array name="size_arrays">
+    <item>XS</item>
+    <item>S</item>
+    <item>M</item>
+    <item>L</item>
+    <item>XL</item>
+    <item>XXL</item>
+    <item>XXXL</item>
+</string-array>
+
+</resources>

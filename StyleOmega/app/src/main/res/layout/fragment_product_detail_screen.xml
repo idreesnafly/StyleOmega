@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragDetailScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ProductDetailScreen">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:scrollbarStyle="insideInset">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/prodImage"
+                    android:layout_width="353dp"
+                    android:layout_height="358dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/prodNameTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="Product Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.047"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prodImage" />
+
+                <TextView
+                    android:id="@+id/priceTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Price"
+                    android:textAppearance="@android:style/TextAppearance.Holo.Widget.PopupMenu.Large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prodNameTxt" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="223dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:entries="@array/color_arrays"
+                    android:prompt="@string/Color_prompt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/priceTxt" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="223dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:entries="@array/size_arrays"
+                    android:prompt="@string/ChooseSize"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="200dp"
+                    android:layout_height="29dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="170dp"
+                    android:layout_marginRight="170dp"
+                    android:text="Product Description"
+                    android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buynowBtn" />
+
+                <TextView
+                    android:id="@+id/descriptionTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="30dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="49dp"
+                    android:layout_marginEnd="124dp"
+                    android:layout_marginRight="124dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
+
+                <Button
+                    android:id="@+id/buynowBtn"
+                    style="@android:style/Widget.Holo.Button.Toggle"
+                    android:layout_width="205dp"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="40dp"
+                    android:text="BUY NOW"
+                    app:layout_constraintEnd_toStartOf="@+id/addtoCartBtn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+                <Button
+                    android:id="@+id/addtoCartBtn"
+                    style="@android:style/Widget.Material.Button.Colored"
+                    android:layout_width="165dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="ADD TO CART"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/buynowBtn"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner2"
+                    tools:targetApi="m" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="92dp"
+                    android:layout_marginRight="92dp"
+                    android:text="Colour"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/priceTxt" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="107dp"
+                    android:layout_marginRight="107dp"
+                    android:text="Size"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="306dp"
+                    android:layout_marginRight="306dp"
+                    android:text="Product Reviews"
+                    android:textAppearance="@android:style/TextAppearance.Holo.SearchResult.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.013"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ratingBar2" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="350dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="306dp"
+                    android:layout_marginRight="306dp"
+                    android:layout_marginBottom="16dp"
+                    android:paddingLeft="10dp"
+                    android:text='$ adb shell pm install -t -r "/data/local/tmp/com.example.idrees.styleomega" '
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.006"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="104dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="3.98/5.0"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/ratingBar2"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
