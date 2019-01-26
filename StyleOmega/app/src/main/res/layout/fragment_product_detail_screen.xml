@@ -76,7 +76,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/prodNameTxt" />
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/spinnercolour"
                     android:layout_width="223dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -88,7 +88,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/priceTxt" />
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/spinnersize"
                     android:layout_width="223dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -97,7 +97,7 @@
                     android:entries="@array/size_arrays"
                     android:prompt="@string/ChooseSize"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spinner" />
+                    app:layout_constraintTop_toBottomOf="@+id/spinnercolour" />
 
                 <TextView
                     android:id="@+id/textView19"
@@ -157,7 +157,7 @@
                     android:text="BUY NOW"
                     app:layout_constraintEnd_toStartOf="@+id/addtoCartBtn"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+                    app:layout_constraintTop_toBottomOf="@+id/spinnersize" />
 
                 <Button
                     android:id="@+id/addtoCartBtn"
@@ -170,7 +170,7 @@
                     android:text="ADD TO CART"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/buynowBtn"
-                    app:layout_constraintTop_toBottomOf="@+id/spinner2"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnersize"
                     tools:targetApi="m" />
 
                 <TextView
@@ -183,7 +183,7 @@
                     android:layout_marginEnd="92dp"
                     android:layout_marginRight="92dp"
                     android:text="Colour"
-                    app:layout_constraintEnd_toStartOf="@+id/spinner"
+                    app:layout_constraintEnd_toStartOf="@+id/spinnercolour"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/priceTxt" />
 
@@ -197,7 +197,7 @@
                     android:layout_marginEnd="107dp"
                     android:layout_marginRight="107dp"
                     android:text="Size"
-                    app:layout_constraintEnd_toStartOf="@+id/spinner2"
+                    app:layout_constraintEnd_toStartOf="@+id/spinnersize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
@@ -250,6 +250,45 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/ratingBar2"
                     app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
+
+                <ImageView
+                    android:id="@+id/share"
+                    android:layout_width="43dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="372dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@drawable/ic_menu_share"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.693"
+                    app:layout_constraintStart_toEndOf="@+id/prodImage"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/spinnerquantity"
+                    android:layout_width="223dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="9dp"
+                    android:layout_marginRight="9dp"
+                    android:entries="@array/Quantity_arrays"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView29"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnersize" />
+
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="81dp"
+                    android:layout_marginRight="81dp"
+                    android:text="Quantity"
+                    app:layout_constraintEnd_toStartOf="@+id/spinnerquantity"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

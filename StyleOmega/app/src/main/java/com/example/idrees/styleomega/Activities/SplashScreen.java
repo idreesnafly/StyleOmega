@@ -9,14 +9,16 @@ import com.google.gson.Gson;
 
 import org.json.JSONArray;
 
+import java.util.List;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        if(Product.listAll(Product.class).isEmpty()){
+        List<Product> products = Product.listAll(Product.class);
+        if(products==null && products.isEmpty()){
             addProducts();
         }
 
