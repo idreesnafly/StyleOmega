@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.idrees.styleomega">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="com.orm.SugarApp"
         android:allowBackup="true"
@@ -12,12 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
+
         <meta-data
             android:name="DATABASE"
             android:value="styleOmega.db" />
         <meta-data
             android:name="VERSION"
-            android:value="7" />
+            android:value="10" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />

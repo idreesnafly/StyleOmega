@@ -2,10 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/menulogout"
         android:orderInCategory="100"
         android:title="Logout"
         app:showAsAction="never" />
-    <item android:title="My Profile" />
-    <item android:title="My Cart" />
+    <item
+        android:id="@+id/menuprofile"
+        android:title="My Profile" />
+    <item
+        android:id="@+id/menucart"
+        android:title="My Cart" />
 </menu>

@@ -11,10 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.idrees.styleomega.Activities.SignIn;
 import com.example.idrees.styleomega.Model.User;
 import com.example.idrees.styleomega.R;
+import com.orm.SugarRecord;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -54,6 +56,7 @@ public class myAccount_Frag extends Fragment {
 
         SharedPreferences sharedpref=this.getActivity().getApplicationContext().getSharedPreferences(SignIn.mypreference,Context.MODE_PRIVATE);
         User user= User.findById(User.class,sharedpref.getLong("ID",10));
+        final Long ID=user.getId();
 
         List<User> users=User.findWithQuery(User.class,"Select * from User where Username=?",sharedpref.getString("Username","username"));
         txtname.setText(user.getUsername());
@@ -61,6 +64,18 @@ public class myAccount_Frag extends Fragment {
         txtpass.setText(user.getPassword());
 
 
+        saveedit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                User user=SugarRecord.findById(User.class,ID);
+                user.setUsername(txtname.getText().toString());
+                user.setEmail(txtemail.getText().toString());
+                user.setPassword(txtpass.getText().toString());
+                user.save();
+                Toast.makeText(getContext(),"Account information successfully updated!",Toast.LENGTH_SHORT);
+
+            }
+        });
 
 
         return v;

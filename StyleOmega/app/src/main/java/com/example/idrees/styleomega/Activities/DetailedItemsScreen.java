@@ -42,9 +42,9 @@ public class DetailedItemsScreen extends AppCompatActivity {
         Button buynowBtn=(Button)findViewById(R.id.buynowBtn);
         Button addBtn=(Button)findViewById(R.id.addtoCartBtn);
         ImageView sharbtn=(ImageView)findViewById(R.id.share);
-        Spinner size=(Spinner)findViewById(R.id.spinnersize);
+        final Spinner size=(Spinner)findViewById(R.id.spinnersize);
         final Spinner quantity = (Spinner)findViewById(R.id.spinnerquantity);
-        Spinner color=(Spinner)findViewById(R.id.spinnercolour);
+        final Spinner color=(Spinner)findViewById(R.id.spinnercolour);
 
 
 //        final Spinner finalQuantity = quantity;
@@ -87,8 +87,14 @@ public class DetailedItemsScreen extends AppCompatActivity {
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
                 String Shareimg=product.getProductImage().toString();
+                String sharename=product.getProductName();
+                String shareprice=product.getProductPrice().toString();
                 share.putExtra(Intent.EXTRA_SUBJECT, Shareimg);
                 share.putExtra(Intent.EXTRA_TEXT, Shareimg);
+                share.putExtra(Intent.EXTRA_SUBJECT, sharename);
+                share.putExtra(Intent.EXTRA_TEXT, sharename);
+                share.putExtra(Intent.EXTRA_SUBJECT, shareprice);
+                share.putExtra(Intent.EXTRA_TEXT, shareprice);
                 startActivity(Intent.createChooser(share, "Share Via"));
             }
         });
@@ -96,7 +102,10 @@ public class DetailedItemsScreen extends AppCompatActivity {
         buynowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DetailedItemsScreen.this,ShoppingCart.class));
+                Bundle bun=new Bundle();
+                bun.putLong("UID",ID);
+                startActivity(new Intent(DetailedItemsScreen.this,CheckoutScreen.class));
+
             }
         });
 
@@ -108,6 +117,13 @@ public class DetailedItemsScreen extends AppCompatActivity {
 
 
                 final int quantity1=Integer.parseInt(quantity.getSelectedItem().toString());
+                final String size1=size.getSelectedItem().toString();
+                final String color1=color.getSelectedItem().toString();
+
+                Bundle bundle=new Bundle();
+                bundle.putString("SIZE",size1);
+                bundle.putString("COLOR",color1);
+                bundle.putInt("QUANTITY",quantity1);
 
                 SharedPreferences sp=getApplicationContext().getSharedPreferences(SignIn.mypreference,Context.MODE_PRIVATE);
                 final Long UserID=sp.getLong("ID",10);
@@ -119,7 +135,7 @@ public class DetailedItemsScreen extends AppCompatActivity {
                 List<Cart> order=Cart.find(Cart.class,"user=? and status=?",UserID.toString(),"Pending");
                 if(order.size()>0){
                     Cart cart = order.get(0);
-                    List <CartItem> od=CartItem.find(CartItem.class,"order=? and product=?",cart.getId().toString(),ID.toString());
+                    List <CartItem> od=CartItem.find(CartItem.class,"cartorder=? and products=?",cart.getId().toString(),ID.toString());
                     if(od.size()==0){
                         CartItem orditem=new CartItem(quantity1,date,cart,product);
                         orditem.save();

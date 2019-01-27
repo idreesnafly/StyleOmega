@@ -1,11 +1,14 @@
 package com.example.idrees.styleomega.Fragments;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.idrees.styleomega.R;
 
@@ -24,7 +27,34 @@ public class ContactUsFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_us, container, false);
+        View v= inflater.inflate(R.layout.fragment_contact_us, container, false);
+
+        ImageView callimg=(ImageView)v.findViewById(R.id.callimg);
+        ImageView locateimg=(ImageView)v.findViewById(R.id.locateimg);
+
+        callimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("Tel:" + "0772350944"));
+                startActivity(intent);
+            }
+        });
+
+        locateimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://goo.gl/maps/TNpPZcETEQw"));
+                startActivity(i);
+            }
+        });
+
+
+
+        return v;
+
     }
 
 }

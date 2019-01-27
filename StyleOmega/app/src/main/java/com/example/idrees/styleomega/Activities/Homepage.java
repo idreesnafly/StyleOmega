@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import com.example.idrees.styleomega.Fragments.ContactUsFrag;
 import com.example.idrees.styleomega.Fragments.Homepage_Frag;
 import com.example.idrees.styleomega.Fragments.Inquiries;
+import com.example.idrees.styleomega.Fragments.PastOrders;
 import com.example.idrees.styleomega.Fragments.myAccount_Frag;
 import com.example.idrees.styleomega.R;
 import com.squareup.picasso.Picasso;
@@ -84,8 +85,16 @@ public class Homepage extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.menuprofile) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new myAccount_Frag()).commit();
+        }
+        else if(id==R.id.menucart){
+            startActivity(new Intent(Homepage.this,ShoppingCart.class));
+        }else if(id==R.id.menulogout){
+            SharedPreferences sharedpreferences =getSharedPreferences(SignIn.mypreference, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.clear();
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -103,12 +112,16 @@ public class Homepage extends AppCompatActivity
 
         } else if (id == R.id.nav_Cart) {
 
+            startActivity(new Intent(Homepage.this,ShoppingCart.class));
+
 
         } else if (id == R.id.nav_Account) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new myAccount_Frag()).commit();
 
 
         } else if (id == R.id.nav_PastOrders) {
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new PastOrders()).commit();
 
         } else if (id == R.id.ContactUS) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactUsFrag()).commit();

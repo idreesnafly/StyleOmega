@@ -8,18 +8,18 @@ public class CartItem extends SugarRecord <CartItem> {
 
     int Quantity;
     Date purchaseDate;
-    Cart order;
-    Product product;
+    Cart cartorder;
+    Product products;
 
     public CartItem() {
 
     }
 
-    public CartItem(int quantity, Date purchaseDate, Cart order, Product product) {
+    public CartItem(int quantity, Date purchaseDate, Cart cartorder, Product products) {
         Quantity = quantity;
         this.purchaseDate = purchaseDate;
-        this.order = order;
-        this.product = product;
+        this.cartorder = cartorder;
+        this.products = products;
     }
 
     public int getQuantity() {
@@ -39,18 +39,18 @@ public class CartItem extends SugarRecord <CartItem> {
     }
 
     public Cart getOrder() {
-        return order;
+        return cartorder;
     }
 
     public void setOrder(Cart order) {
-        this.order = order;
+        this.cartorder = order;
     }
 
     public Product getProduct() {
-        return product;
+        return products;
     }
 
     public void setProduct(Product product) {
-        this.product = product;
+        this.products = product;
     }
 }

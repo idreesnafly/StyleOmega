@@ -63,7 +63,7 @@ public class SignUp extends AppCompatActivity {
 
             User user=new User(userusername,useremail,userpassword);
             user.save();
-
+            Toast.makeText(SignUp.this, "Successfully Registered!", Toast.LENGTH_SHORT).show();
             //testing purpose
             Log.i("User Count",Integer.toString(createdUsers.size()));
 

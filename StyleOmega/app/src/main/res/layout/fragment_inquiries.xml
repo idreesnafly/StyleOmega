@@ -28,7 +28,7 @@
             android:textColor="@color/Gold"
             android:textSize="24dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintBottom_toTopOf="@+id/subtxt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +50,7 @@
             android:textColor="@color/White"
             android:textSize="18dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintBottom_toTopOf="@+id/subtxt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -71,13 +71,13 @@
             android:textColor="@color/White"
             android:textSize="18dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/editText3"
+            app:layout_constraintBottom_toTopOf="@+id/msgtxt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/subtxt" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/subtxt"
             android:layout_width="300dp"
             android:layout_height="57dp"
             android:layout_marginStart="42dp"
@@ -95,7 +95,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/msgtxt"
             android:layout_width="300dp"
             android:layout_height="170dp"
             android:layout_marginStart="42dp"
@@ -110,13 +110,13 @@
             android:inputType="textMultiLine"
             android:padding="10dp"
             android:paddingLeft="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/submitbtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/submitbtn"
             android:layout_width="186dp"
             android:layout_height="54dp"
             android:layout_marginStart="99dp"
@@ -134,7 +134,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/msgtxt" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

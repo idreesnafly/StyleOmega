@@ -1,6 +1,8 @@
 package com.example.idrees.styleomega.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.renderscript.Sampler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -23,6 +25,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.idrees.styleomega.Adapter.productAdapter;
+import com.example.idrees.styleomega.Fragments.myAccount_Frag;
 import com.example.idrees.styleomega.Model.Product;
 import com.example.idrees.styleomega.R;
 
@@ -103,8 +106,13 @@ mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if(id==R.id.cartid){
+            startActivity(new Intent(productpage.this,ShoppingCart.class));
+        }else if(id==R.id.logoutid){
+            SharedPreferences sharedpreferences =getSharedPreferences(SignIn.mypreference, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.clear();
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

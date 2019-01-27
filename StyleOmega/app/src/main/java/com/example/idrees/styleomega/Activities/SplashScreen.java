@@ -18,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         List<Product> products = Product.listAll(Product.class);
-        if(products==null && products.isEmpty()){
+        if(products.isEmpty()){
             addProducts();
         }
 
