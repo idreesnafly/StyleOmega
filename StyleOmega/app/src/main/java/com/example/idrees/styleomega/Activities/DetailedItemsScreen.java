@@ -3,6 +3,7 @@ package com.example.idrees.styleomega.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,7 @@ public class DetailedItemsScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_product_detail_screen);
 
+        setTitle("Product Details");
         TextView pName=(TextView)findViewById(R.id.prodNameTxt);
         TextView pPrice=(TextView)findViewById(R.id.priceTxt);
         TextView pDesc=(TextView)findViewById(R.id.descriptionTxt);
@@ -56,6 +58,14 @@ public class DetailedItemsScreen extends AppCompatActivity {
         RatingBar rating=(RatingBar)findViewById(R.id.ratingBar);
         final EditText comment=(EditText)findViewById(R.id.commenttxt);
         final ListView ls=(ListView)findViewById(R.id.commentlist);
+        FloatingActionButton floatingActionButton=(FloatingActionButton)findViewById(R.id.floatingActionButton2);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DetailedItemsScreen.this,ShoppingCart.class));
+            }
+        });
 
 
         final Long ID=getIntent().getLongExtra("PRODUCTID",0);
@@ -90,11 +100,13 @@ public class DetailedItemsScreen extends AppCompatActivity {
 
                 comment.setText("");
 
-                List <Reviews> reviews=Reviews.findWithQuery(Reviews.class,"Select * from Reviews where product=?",product.getId().toString());
-                final reviewAdapter reviewAdapter=new reviewAdapter(getApplicationContext(),reviews);
-                ls.setAdapter(reviewAdapter);
+
             }
         });
+
+        List <Reviews> reviews=Reviews.findWithQuery(Reviews.class,"Select * from Reviews where product=?",product.getId().toString());
+        final reviewAdapter reviewAdapter=new reviewAdapter(getApplicationContext(),reviews);
+        ls.setAdapter(reviewAdapter);
 
         pName.setText(product.getProductName());
         pPrice.setText("LKR "+product.getProductPrice());
@@ -172,12 +184,14 @@ public class DetailedItemsScreen extends AppCompatActivity {
                     //if not 0 take the first item and change quantity
                     //if 0 create create new order item pass the ordeer num
                 }else{
+                    if(order.size()==0){
                     Cart order1 = new Cart(product.getProductPrice(),"Pending",user);//add the variables
                     order1.save();
 
                     CartItem orderitem=new CartItem(quantity1,date,order1,product);//add
                     orderitem.save();
                     Toast.makeText(getApplicationContext(),"Product Added to your Order",Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }

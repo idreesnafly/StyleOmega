@@ -77,23 +77,6 @@ Context context;
                 context.startActivity(myIntent);
             }
         });
-
-       /* ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Long ID=prod.getId();
-                Bundle bundle = new Bundle();
-                bundle.putLong("PRODUCTID",ID);
-
-                Intent myIntent = new Intent(view.getContext(), DetailedItemsScreen.class);
-                context.startActivity(myIntent);
-
-
-
-            }
-        });*/
-
-
         return convertView;
     }
 }

@@ -41,7 +41,7 @@ public class ContactUsFrag extends Fragment {
             public void onClick(View v) {
                 //String phoneNumber = String.format("tel: %s","+94772350944");
 
-                Intent intent = new Intent(Intent.ACTION_CALL);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:0772350944"));
                 startActivity(intent);
             }

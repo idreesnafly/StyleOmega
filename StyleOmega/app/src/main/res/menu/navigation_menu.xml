@@ -9,9 +9,4 @@
 
     </item>
 
-    <item
-        android:id="@+id/logoutid"
-        android:title="Logout">
-
-    </item>
 </menu>

@@ -29,7 +29,7 @@ public class ShoppingCart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
-
+          setTitle("My Cart");
         SharedPreferences sp=getApplicationContext().getSharedPreferences(SignIn.mypreference,Context.MODE_PRIVATE);
         Long userID=sp.getLong("ID",10);
 
@@ -38,30 +38,19 @@ public class ShoppingCart extends AppCompatActivity {
         TextView totalprice=(TextView)findViewById(R.id.textView18);
 
 
-//        final int count = cartlistview.getAdapter().getCount();
-
-
-        //noofitems.setText(String.valueOf(count));
-
         List <Cart> orders=Cart.find(Cart.class,"user=?",userID.toString());
+        Cart cart=orders.get(0);
+        Long CartID=cart.getId();
 
-        /*List <Cart> cartttt=Cart.listAll(Cart.class);
-        List <CartItem> cartitrm=CartItem.listAll(CartItem.class);
-        List <User> userr=User.listAll(User.class);
-        List <Product> prod=Product.listAll(Product.class);*/
-
-
-        List<CartItem> cartit=CartItem.find(CartItem.class,"cartorder=?",orders.toString());
-        //List <CartItem> aaa=CartItem.findWithQuery(CartItem.class,"Select * from CartItem where cartorder=?",String.valueOf(orders));
-        List<CartItem> orditem=CartItem.listAll(CartItem.class);
+        List<CartItem> cartit=CartItem.find(CartItem.class,"cartorder=?",CartID.toString());
+        //List<CartItem> orditem=CartItem.listAll(CartItem.class);
 
         Intent in=getIntent();
         String size=in.getStringExtra("SIZE");
         String color=in.getStringExtra("COLOR");
         int quantity=in.getIntExtra("QUANTITY",0);
 
-
-        for(CartItem ct: orditem ){
+        for(CartItem ct: cartit ){
             double price1=(ct.getProduct().getProductPrice())*(ct.getQuantity());
             price+=price1;
             quantity1+=ct.getQuantity();
@@ -70,10 +59,7 @@ public class ShoppingCart extends AppCompatActivity {
         noofitems.setText("No.of Items: "+String.valueOf(quantity1));
         totalprice.setText("Total: LKR "+String.valueOf(price));
 
-
-        cartadapter cartadap=new cartadapter(getApplicationContext(),R.layout.cartitem,orditem,size,color,quantity);
-        //productAdapter pro=new productAdapter(getApplicationContext(),R.layout.customcartview,orditem);
-
+        cartadapter cartadap=new cartadapter(getApplicationContext(),R.layout.cartitem,cartit,size,color,quantity);
         cartlistview.setAdapter(cartadap);
 
     }
@@ -82,7 +68,6 @@ public class ShoppingCart extends AppCompatActivity {
         Bundle bun=new Bundle();
         bun.putDouble("PRICE",price);
         bun.putInt("QUANTITY",quantity1);
-
         startActivity(new Intent(ShoppingCart.this,CheckoutScreen.class));
     }
 

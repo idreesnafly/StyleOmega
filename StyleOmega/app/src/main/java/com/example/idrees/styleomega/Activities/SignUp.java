@@ -23,6 +23,7 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        setTitle("Register");
         usernameTxt=(EditText)findViewById(R.id.usernameField);
         emailTxt=(EditText)findViewById(R.id.emailField);
         passwordTxt=(EditText)findViewById(R.id.passwordField);

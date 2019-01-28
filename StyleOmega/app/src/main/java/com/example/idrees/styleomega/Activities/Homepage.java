@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.idrees.styleomega.Fragments.ContactUsFrag;
 import com.example.idrees.styleomega.Fragments.Homepage_Frag;
@@ -32,10 +33,12 @@ import com.squareup.picasso.Picasso;
 public class Homepage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Fragment fragment=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,15 +63,28 @@ public class Homepage extends AppCompatActivity
 
     }
 
+    public void home(){
+        Fragment fragment=new Homepage_Frag();
+        FragmentManager fm=getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.fragment_container,fragment).commit();
+        setTitle("StyleOmega");
+
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(fragment instanceof Homepage_Frag) {
+                super.onBackPressed();
+            }else{
+                home();
+            }
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -87,9 +103,11 @@ public class Homepage extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.menuprofile) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new myAccount_Frag()).commit();
+            setTitle("My Profile");
         }
         else if(id==R.id.menucart){
             startActivity(new Intent(Homepage.this,ShoppingCart.class));
+            setTitle("My Cart");
         }else if(id==R.id.menulogout){
             SharedPreferences sharedpreferences =getSharedPreferences(SignIn.mypreference, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -113,23 +131,24 @@ public class Homepage extends AppCompatActivity
         } else if (id == R.id.nav_Cart) {
 
             startActivity(new Intent(Homepage.this,ShoppingCart.class));
-
+            setTitle("My Cart");
 
         } else if (id == R.id.nav_Account) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new myAccount_Frag()).commit();
-
+            setTitle("My Account");
 
         } else if (id == R.id.nav_PastOrders) {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new PastOrders()).commit();
+            setTitle("Past Orders");
 
         } else if (id == R.id.ContactUS) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactUsFrag()).commit();
-
+            setTitle("Contact Us");
         } else if (id == R.id.nav_Inquiries) {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Inquiries()).commit();
-
+            setTitle("Inquiries");
         } else if(id==R.id.nav_Signout){
             SharedPreferences sharedpreferences =getSharedPreferences(SignIn.mypreference, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedpreferences.edit();

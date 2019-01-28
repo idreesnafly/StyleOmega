@@ -108,12 +108,13 @@ mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
         //noinspection SimplifiableIfStatement
         if(id==R.id.cartid){
             startActivity(new Intent(productpage.this,ShoppingCart.class));
-        }else if(id==R.id.logoutid){
+            setTitle("My Cart");
+        }/*else if(id==R.id.logoutid){
             SharedPreferences sharedpreferences =getSharedPreferences(SignIn.mypreference, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.clear();
             finish();
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }

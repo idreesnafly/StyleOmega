@@ -17,6 +17,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         List<Product> products = Product.listAll(Product.class);
         if(products.isEmpty()){
             addProducts();
@@ -32,6 +33,7 @@ public class SplashScreen extends AppCompatActivity {
         } catch (Exception ignored) {
         }
 
+        finish();
 
 
     }

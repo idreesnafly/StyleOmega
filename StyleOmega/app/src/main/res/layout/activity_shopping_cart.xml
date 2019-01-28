@@ -10,7 +10,7 @@
     <ListView
         android:id="@+id/cartList"
         style="@style/Widget.AppCompat.ListView"
-        android:layout_width="395dp"
+        android:layout_width="match_parent"
         android:layout_height="363dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

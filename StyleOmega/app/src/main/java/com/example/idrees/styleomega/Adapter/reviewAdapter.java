@@ -40,6 +40,9 @@ public class reviewAdapter extends ArrayAdapter <Reviews> {
         cmnt.setText(reviews.getReview());
         userName.setText(reviews.getUser().getUsername());
 
+        rb.setFocusable(false);
+        rb.setIsIndicator(true);
+
         return view;
     }
 }
