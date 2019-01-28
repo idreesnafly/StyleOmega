@@ -18,33 +18,16 @@
             android:layout_height="40dp"
             android:layout_marginStart="42dp"
             android:layout_marginLeft="42dp"
-            android:layout_marginTop="7dp"
             android:layout_marginEnd="42dp"
             android:layout_marginRight="42dp"
             android:background="@drawable/textfieldstyle"
             android:ems="10"
             android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/textView24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-        <EditText
-            android:id="@+id/emailTxt"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginLeft="42dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginRight="42dp"
-            android:background="@drawable/textfieldstyle"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
         <EditText
             android:id="@+id/passwordTxt"
@@ -52,16 +35,17 @@
             android:layout_height="40dp"
             android:layout_marginStart="42dp"
             android:layout_marginLeft="42dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="42dp"
             android:layout_marginRight="42dp"
             android:background="@drawable/textfieldstyle"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/editsaveBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView24" />
+            app:layout_constraintTop_toBottomOf="@+id/textView27"
+            app:layout_constraintVertical_bias="0.205" />
 
         <Button
             android:id="@+id/editsaveBtn"
@@ -69,7 +53,7 @@
             android:layout_height="56dp"
             android:layout_marginStart="113dp"
             android:layout_marginLeft="113dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="113dp"
             android:layout_marginRight="113dp"
             android:layout_marginBottom="16dp"
@@ -82,7 +66,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailTxt" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordTxt" />
 
         <TextView
             android:id="@+id/textView20"
@@ -93,14 +77,14 @@
             android:layout_marginTop="7dp"
             android:layout_marginEnd="146dp"
             android:layout_marginRight="146dp"
-            android:layout_marginBottom="10dp"
             android:text="My Profile"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintBottom_toTopOf="@+id/myprofImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <ImageView
             android:id="@+id/myprofImage"
@@ -111,6 +95,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="92dp"
             android:layout_marginRight="92dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView17"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -121,12 +106,14 @@
             android:layout_height="23dp"
             android:layout_marginStart="172dp"
             android:layout_marginLeft="172dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="172dp"
             android:layout_marginRight="172dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:text="Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+            app:layout_constraintBottom_toTopOf="@+id/nameTxt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/myprofImage" />
@@ -140,8 +127,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="168dp"
             android:layout_marginRight="168dp"
+            android:layout_marginBottom="5dp"
             android:text="Email"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+            app:layout_constraintBottom_toTopOf="@+id/emailTxt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
@@ -152,14 +141,32 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="161dp"
             android:layout_marginLeft="161dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="148dp"
             android:layout_marginRight="148dp"
+            android:layout_marginBottom="5dp"
             android:text="Password"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+            app:layout_constraintBottom_toTopOf="@+id/passwordTxt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordTxt" />
+            app:layout_constraintTop_toBottomOf="@+id/emailTxt" />
+
+        <EditText
+            android:id="@+id/emailTxt"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginLeft="42dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginRight="42dp"
+            android:background="@drawable/textfieldstyle"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/textView27"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -56,6 +56,9 @@ public class SignUp extends AppCompatActivity {
         if(useremail.isEmpty()||userusername.isEmpty()||userpassword.isEmpty()){
             Toast.makeText(SignUp.this, "Fill empty fields!", Toast.LENGTH_SHORT).show();
         }
+        else if(Patterns.EMAIL_ADDRESS.matcher(useremail).equals(true)){
+            Toast.makeText(SignUp.this, "Enter a valid Email Address!", Toast.LENGTH_SHORT).show();
+        }
         else if (!confirmpassword.equals(userpassword)){
             Toast.makeText(SignUp.this, "Passwords entered does not match!", Toast.LENGTH_SHORT).show();
         }

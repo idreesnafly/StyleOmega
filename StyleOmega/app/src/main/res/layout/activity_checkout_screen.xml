@@ -16,6 +16,47 @@
             android:orientation="vertical">
 
             <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/checknametxt"
+                    android:layout_width="272dp"
+                    android:layout_height="46dp"
+                    android:layout_marginStart="39dp"
+                    android:layout_marginLeft="39dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="73dp"
+                    android:layout_marginRight="73dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    app:layout_constraintBottom_toTopOf="@+id/checkprice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/checkprice"
+                    android:layout_width="262dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="38dp"
+                    android:layout_marginLeft="38dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="84dp"
+                    android:layout_marginRight="84dp"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checknametxt" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
                 android:id="@+id/constraintLayout3"
                 android:layout_width="0dp"
                 android:layout_height="172dp"
@@ -81,7 +122,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
                 <TextView
-                    android:id="@+id/textView32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
@@ -133,7 +173,7 @@
                     android:text="FREE"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     app:layout_constraintStart_toEndOf="@+id/textView37"
-                    app:layout_constraintTop_toBottomOf="@+id/textView39" />
+                    app:layout_constraintTop_toBottomOf="@+id/subtotal" />
 
                 <TextView
                     android:id="@+id/textView38"
@@ -146,12 +186,12 @@
                     android:layout_marginRight="203dp"
                     android:text="Total"
                     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title"
-                    app:layout_constraintEnd_toStartOf="@+id/textView41"
+                    app:layout_constraintEnd_toStartOf="@+id/total"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
                 <TextView
-                    android:id="@+id/textView41"
+                    android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -229,12 +269,12 @@
                     android:layout_marginTop="71dp"
                     android:text="Sub-total"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    app:layout_constraintEnd_toStartOf="@+id/textView39"
+                    app:layout_constraintEnd_toStartOf="@+id/subtotal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
 
                 <TextView
-                    android:id="@+id/textView39"
+                    android:id="@+id/subtotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="212dp"
@@ -248,7 +288,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView42"
                     android:layout_width="343dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="17dp"
@@ -274,6 +313,7 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/_dynamic">
 
@@ -319,7 +359,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
 
                 <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView3"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="18dp"
@@ -331,18 +370,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2" />
             </android.support.constraint.ConstraintLayout>
-
-            <ListView
-                android:id="@+id/buylistview"
-                android:layout_width="383dp"
-                android:layout_height="181dp"
-                android:layout_marginBottom="1dp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </ListView>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

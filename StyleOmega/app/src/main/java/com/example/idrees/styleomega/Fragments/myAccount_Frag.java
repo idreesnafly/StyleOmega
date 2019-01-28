@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.idrees.styleomega.Activities.SignIn;
+import com.example.idrees.styleomega.Activities.SignUp;
 import com.example.idrees.styleomega.Model.User;
 import com.example.idrees.styleomega.R;
 import com.orm.SugarRecord;
@@ -72,7 +74,7 @@ public class myAccount_Frag extends Fragment {
                 user.setEmail(txtemail.getText().toString());
                 user.setPassword(txtpass.getText().toString());
                 user.save();
-                Toast.makeText(getContext(),"Account information successfully updated!",Toast.LENGTH_SHORT);
+                Toast.makeText(getContext(),"Account information successfully updated!",Toast.LENGTH_SHORT).show();
 
             }
         });

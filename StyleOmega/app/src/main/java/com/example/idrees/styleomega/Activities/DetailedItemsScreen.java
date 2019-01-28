@@ -7,14 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.idrees.styleomega.Adapter.reviewAdapter;
 import com.example.idrees.styleomega.Model.Cart;
 import com.example.idrees.styleomega.Model.CartItem;
 import com.example.idrees.styleomega.Model.Product;
+import com.example.idrees.styleomega.Model.Reviews;
 import com.example.idrees.styleomega.Model.User;
 import com.example.idrees.styleomega.R;
 import com.squareup.picasso.Picasso;
@@ -29,6 +34,7 @@ public class DetailedItemsScreen extends AppCompatActivity {
     User user;
     int quantity1;
     Date date;
+    float ratingval;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,36 +52,52 @@ public class DetailedItemsScreen extends AppCompatActivity {
         final Spinner quantity = (Spinner)findViewById(R.id.spinnerquantity);
         final Spinner color=(Spinner)findViewById(R.id.spinnercolour);
 
-
-//        final Spinner finalQuantity = quantity;
-//        quantity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                quantity1=(Integer) quantity.getItemAtPosition(position);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
+        Button reviewBtn=(Button)findViewById(R.id.reviewBtn);
+        RatingBar rating=(RatingBar)findViewById(R.id.ratingBar);
+        final EditText comment=(EditText)findViewById(R.id.commenttxt);
+        final ListView ls=(ListView)findViewById(R.id.commentlist);
 
 
-        /*String size1=size.getSelectedItem().toString();
-        String color1=color.getSelectedItem().toString();*/
-
-        //Bundle bundle=getIntent().getExtras();
         final Long ID=getIntent().getLongExtra("PRODUCTID",0);
         Toast.makeText(getApplicationContext(),ID.toString(),Toast.LENGTH_SHORT).show();
 
         date=new Date();
 
-       // List<Product> prodlist=Product.listAll(Product.class);
+        // List<Product> prodlist=Product.listAll(Product.class);
 
         final Product product=Product.findById(Product.class,ID);
 
+
+        rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                ratingval=rating;
+            }
+        });
+
+        reviewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sp=getApplicationContext().getSharedPreferences(SignIn.mypreference,Context.MODE_PRIVATE);
+                final long USERID=sp.getLong("ID",10);
+
+                User currentUser=User.findById(User.class,USERID);
+
+                String commentTxt=comment.getText().toString();
+
+                Reviews rr=new Reviews(currentUser,product,ratingval,commentTxt);
+                rr.save();
+
+                comment.setText("");
+
+                List <Reviews> reviews=Reviews.findWithQuery(Reviews.class,"Select * from Reviews where product=?",product.getId().toString());
+                final reviewAdapter reviewAdapter=new reviewAdapter(getApplicationContext(),reviews);
+                ls.setAdapter(reviewAdapter);
+            }
+        });
+
         pName.setText(product.getProductName());
-        pPrice.setText("RS: "+product.getProductPrice());
+        pPrice.setText("LKR "+product.getProductPrice());
         pDesc.setText(product.getDescription());
 
         Picasso.get().load(product.getProductImage()).fit().into(img);
@@ -91,10 +113,6 @@ public class DetailedItemsScreen extends AppCompatActivity {
                 String shareprice=product.getProductPrice().toString();
                 share.putExtra(Intent.EXTRA_SUBJECT, Shareimg);
                 share.putExtra(Intent.EXTRA_TEXT, Shareimg);
-                share.putExtra(Intent.EXTRA_SUBJECT, sharename);
-                share.putExtra(Intent.EXTRA_TEXT, sharename);
-                share.putExtra(Intent.EXTRA_SUBJECT, shareprice);
-                share.putExtra(Intent.EXTRA_TEXT, shareprice);
                 startActivity(Intent.createChooser(share, "Share Via"));
             }
         });

@@ -45,8 +45,9 @@ public class Inquiries extends Fragment {
                 intent.putExtra(Intent.EXTRA_EMAIL,email);
                 intent.putExtra(Intent.EXTRA_SUBJECT, subject);
                 intent.putExtra(Intent.EXTRA_TEXT,message);
-                startActivity(intent);
-                Toast.makeText(getContext(), "Inquiry Successfully submitted!", Toast.LENGTH_SHORT).show();
+                intent.setType("message/rfc822");
+                startActivity(Intent.createChooser(intent,"Choose an email Client"));
+                //Toast.makeText(getContext(), "Inquiry Successfully submitted!", Toast.LENGTH_SHORT).show();
             }
         });
 

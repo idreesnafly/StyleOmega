@@ -2,13 +2,17 @@ package com.example.idrees.styleomega.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.idrees.styleomega.Model.CartItem;
 import com.example.idrees.styleomega.Model.Product;
@@ -38,25 +42,30 @@ public class cartadapter extends ArrayAdapter <CartItem> {
 
 
         if(convertView==null){
-            convertView=LayoutInflater.from(getContext()).inflate(R.layout.customcartview,parent,false);
+            convertView=LayoutInflater.from(getContext()).inflate(R.layout.cartitem,parent,false);
 
         }
-        ImageView prodImg=(ImageView)convertView.findViewById(R.id.cartimg);
-        ImageView deleteimg=(ImageView)convertView.findViewById(R.id.deletimg);
+        ImageView prodImg=(ImageView)convertView.findViewById(R.id.cartpic);
         TextView name=(TextView)convertView.findViewById(R.id.cartprodname);
         TextView size1=(TextView)convertView.findViewById(R.id.cartsize);
         TextView price=(TextView)convertView.findViewById(R.id.cartprice);
         TextView color1=(TextView)convertView.findViewById(R.id.cartcolor);
-        TextView quantity1=(TextView)convertView.findViewById(R.id.textView36);
+        TextView quantity1=(TextView)convertView.findViewById(R.id.cartquan);
+
+
+
+
 
 
         Product prod=orditem.getProduct();
         name.setText(prod.getProductName());
-        price.setText(prod.getProductPrice().toString());
+        price.setText("LKR "+prod.getProductPrice().toString());
         Picasso.get().load(prod.getProductImage()).fit().into(prodImg);
-        size1.setText(size);
-        color1.setText(color);
-        quantity1.setText(String.valueOf(quantity));
+        size1.setText("Size: "+size);
+        color1.setText("Color: "+color);
+        quantity1.setText("Quantity: "+String.valueOf(quantity));
+
+
         return convertView;
     }
 }

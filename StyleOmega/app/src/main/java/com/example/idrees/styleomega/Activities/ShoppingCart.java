@@ -67,11 +67,11 @@ public class ShoppingCart extends AppCompatActivity {
             quantity1+=ct.getQuantity();
         }
 
-        noofitems.setText(String.valueOf(quantity1));
-        totalprice.setText(String.valueOf(price));
+        noofitems.setText("No.of Items: "+String.valueOf(quantity1));
+        totalprice.setText("Total: LKR "+String.valueOf(price));
 
 
-        cartadapter cartadap=new cartadapter(getApplicationContext(),R.layout.customcartview,orditem,size,color,quantity);
+        cartadapter cartadap=new cartadapter(getApplicationContext(),R.layout.cartitem,orditem,size,color,quantity);
         //productAdapter pro=new productAdapter(getApplicationContext(),R.layout.customcartview,orditem);
 
         cartlistview.setAdapter(cartadap);
@@ -79,7 +79,9 @@ public class ShoppingCart extends AppCompatActivity {
     }
 
     public void onClick(View v){
-
+        Bundle bun=new Bundle();
+        bun.putDouble("PRICE",price);
+        bun.putInt("QUANTITY",quantity1);
 
         startActivity(new Intent(ShoppingCart.this,CheckoutScreen.class));
     }
