@@ -42,9 +42,10 @@ public class PastOrders extends Fragment {
         Cart ct=orders.get(0);
         Long ctID=ct.getId();
         List<CartItem> cartit=CartItem.find(CartItem.class,"cartorder=?",ctID.toString());
+
         pastorderAdapter pst=new pastorderAdapter(getContext(),R.layout.pastorderitem,cartit);
         ls.setAdapter(pst);
-        
+
         return v;
     }
 

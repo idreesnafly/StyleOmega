@@ -77,7 +77,6 @@ public class DetailedItemsScreen extends AppCompatActivity {
 
         final Product product=Product.findById(Product.class,ID);
 
-
         rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -88,23 +87,20 @@ public class DetailedItemsScreen extends AppCompatActivity {
         reviewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sp=getApplicationContext().getSharedPreferences(SignIn.mypreference,Context.MODE_PRIVATE);
+                SharedPreferences sp=getApplicationContext().getSharedPreferences
+                        (SignIn.mypreference,Context.MODE_PRIVATE);
                 final long USERID=sp.getLong("ID",10);
-
                 User currentUser=User.findById(User.class,USERID);
-
                 String commentTxt=comment.getText().toString();
-
                 Reviews rr=new Reviews(currentUser,product,ratingval,commentTxt);
                 rr.save();
-
                 comment.setText("");
-
 
             }
         });
 
-        List <Reviews> reviews=Reviews.findWithQuery(Reviews.class,"Select * from Reviews where product=?",product.getId().toString());
+        List <Reviews> reviews=Reviews.findWithQuery(Reviews.class,
+                "Select * from Reviews where product=?",product.getId().toString());
         final reviewAdapter reviewAdapter=new reviewAdapter(getApplicationContext(),reviews);
         ls.setAdapter(reviewAdapter);
 
@@ -143,9 +139,6 @@ public class DetailedItemsScreen extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
-
-
                 final int quantity1=Integer.parseInt(quantity.getSelectedItem().toString());
                 final String size1=size.getSelectedItem().toString();
                 final String color1=color.getSelectedItem().toString();
@@ -158,40 +151,30 @@ public class DetailedItemsScreen extends AppCompatActivity {
                 SharedPreferences sp=getApplicationContext().getSharedPreferences(SignIn.mypreference,Context.MODE_PRIVATE);
                 final Long UserID=sp.getLong("ID",10);
                 User user=User.findById(User.class,UserID);
-                //Product prod=Product.findById(Product.class,prodID);
-               // User user1=User.findById(User.class,UserID);
-                //user=user1;
+                Long id=user.getId();
 
-                List<Cart> order=Cart.find(Cart.class,"user=? and status=?",UserID.toString(),"Pending");
+                List<Cart> order=Cart.find(Cart.class,"user=? and status=?",id.toString(),"Pending");
                 if(order.size()>0){
                     Cart cart = order.get(0);
                     List <CartItem> od=CartItem.find(CartItem.class,"cartorder=? and products=?",cart.getId().toString(),ID.toString());
                     if(od.size()==0){
                         CartItem orditem=new CartItem(quantity1,date,cart,product);
                         orditem.save();
-                        Toast.makeText(getApplicationContext(),"Cart Updated",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Product added to your existing cart",Toast.LENGTH_SHORT).show();
                     }
                     else{
                         CartItem cart1=od.get(0);
                         cart1.setQuantity(quantity1);
                         cart1.save();
                         Toast.makeText(getApplicationContext(),"Product updated in Cart",Toast.LENGTH_SHORT).show();
-
                     }
-
-                    //order number and product number
-                    //check that list if 0
-                    //if not 0 take the first item and change quantity
-                    //if 0 create create new order item pass the ordeer num
-                }else{
-                    if(order.size()==0){
+                }else if (order.size()==0){
                     Cart order1 = new Cart(product.getProductPrice(),"Pending",user);//add the variables
                     order1.save();
 
                     CartItem orderitem=new CartItem(quantity1,date,order1,product);//add
                     orderitem.save();
                     Toast.makeText(getApplicationContext(),"Product Added to your Order",Toast.LENGTH_SHORT).show();
-                    }
                 }
 
             }

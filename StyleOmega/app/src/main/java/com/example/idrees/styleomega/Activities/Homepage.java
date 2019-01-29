@@ -113,6 +113,7 @@ public class Homepage extends AppCompatActivity
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.clear();
             finish();
+            startActivity(new Intent(Homepage.this,SignIn.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -154,7 +155,7 @@ public class Homepage extends AppCompatActivity
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.clear();
             finish();
-            //startActivity(new Intent(Homepage.this,SignIn.class));
+            startActivity(new Intent(Homepage.this,SignIn.class));
 
         }
 

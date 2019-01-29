@@ -37,30 +37,36 @@ public class ShoppingCart extends AppCompatActivity {
         TextView noofitems=(TextView)findViewById(R.id.noofitems);
         TextView totalprice=(TextView)findViewById(R.id.textView18);
 
+        List <Cart> orders=Cart.find(Cart.class,"user=? and status=?",userID.toString(),"Pending");
 
-        List <Cart> orders=Cart.find(Cart.class,"user=?",userID.toString());
-        Cart cart=orders.get(0);
-        Long CartID=cart.getId();
 
-        List<CartItem> cartit=CartItem.find(CartItem.class,"cartorder=?",CartID.toString());
-        //List<CartItem> orditem=CartItem.listAll(CartItem.class);
+        if(orders.size()>0){
+            Cart cart=orders.get(0);
+            Long CartID=cart.getId();
+            List<CartItem> cartit=CartItem.find(CartItem.class,"cartorder=?",CartID.toString());
 
-        Intent in=getIntent();
-        String size=in.getStringExtra("SIZE");
-        String color=in.getStringExtra("COLOR");
-        int quantity=in.getIntExtra("QUANTITY",0);
+            //List<CartItem> orditem=CartItem.listAll(CartItem.class);
 
-        for(CartItem ct: cartit ){
-            double price1=(ct.getProduct().getProductPrice())*(ct.getQuantity());
-            price+=price1;
-            quantity1+=ct.getQuantity();
+            Intent in=getIntent();
+            String size=in.getStringExtra("SIZE");
+            String color=in.getStringExtra("COLOR");
+            int quantity=in.getIntExtra("QUANTITY",0);
+
+            for(CartItem ct: cartit ){
+                double price1=(ct.getProduct().getProductPrice())*(ct.getQuantity());
+                price+=price1;
+                quantity1+=ct.getQuantity();
+            }
+
+            noofitems.setText("No.of Items: "+String.valueOf(quantity1));
+            totalprice.setText("Total: LKR "+String.valueOf(price));
+
+            cartadapter cartadap=new cartadapter(getApplicationContext(),R.layout.cartitem,cartit,size,color,quantity);
+            cartlistview.setAdapter(cartadap);
         }
 
-        noofitems.setText("No.of Items: "+String.valueOf(quantity1));
-        totalprice.setText("Total: LKR "+String.valueOf(price));
 
-        cartadapter cartadap=new cartadapter(getApplicationContext(),R.layout.cartitem,cartit,size,color,quantity);
-        cartlistview.setAdapter(cartadap);
+
 
     }
 

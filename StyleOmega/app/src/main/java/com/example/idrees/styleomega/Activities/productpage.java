@@ -158,8 +158,6 @@ mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             //String Category;
 
 
-            //.
-            // Category=intent.getStringExtra("ID");
             List<Product> prodlist=Product.listAll(Product.class);
 
            // boolean val=true;
@@ -175,27 +173,10 @@ mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             }else if(id.equals("newArrival")){
               //  prodlist=Product.find(Product.class,"NewArrival=?",);
             }
-           // List<Product> prodlist=Product.listAll(Product.class);
-
             ListView ls=(ListView)rootView.findViewById(R.id.listview1);
             productAdapter pro=new productAdapter(getContext(),R.layout.customlistview,prodlist);
 
             ls.setAdapter(pro);
-
-            /*ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-//                    ProductDetailScreen DTSFrag = new ProductDetailScreen();
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.fragment_container,DTSFrag); // give your fragment container id in first parameter
-//                    transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-//                    transaction.commit();
-
-                   startActivity(new Intent(getContext(),DetailedItemsScreen.class));
-
-                }
-            });*/
 
             return rootView;
 

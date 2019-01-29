@@ -7,7 +7,6 @@
     tools:context=".Fragments.PastOrders"
     android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <ListView
         android:id="@+id/pastrderlistview"

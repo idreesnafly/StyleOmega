@@ -33,8 +33,6 @@ public class SignIn extends AppCompatActivity {
         passwordTxt=(EditText)findViewById(R.id.passwordField);
         Button lgn=(Button)findViewById(R.id.loginbutton);
 
-
-
         lgn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,24 +40,22 @@ public class SignIn extends AppCompatActivity {
                 String Fieldusername = usernameTxt.getText().toString();
                 String Fieldpassword = passwordTxt.getText().toString();
 
-                //List<User> users = User.findWithQuery(User.class,"SELECT * FROM User WHERE Username = ? && Password=?",Fieldusername,Fieldpassword);
-
                 boolean isValid=false;
                 List <User>user=User.listAll(User.class);
 
                 for(User user1:user){
-                    if((Fieldusername.equals(user1.getUsername().toString()))&&(Fieldpassword.equals(user1.getPassword().toString()))){
+                    if((Fieldusername.equals(user1.getUsername().toString()))&&
+                            (Fieldpassword.equals(user1.getPassword().toString()))){
                         isValid=true;
                         UserID=user1.getId();
                         break;
 
                     }
-
                 }
-
                 if (isValid){
 
-                    sharedpreferences=getApplicationContext().getSharedPreferences(mypreference,Context.MODE_PRIVATE);
+                    sharedpreferences=getApplicationContext().getSharedPreferences
+                            (mypreference,Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor=sharedpreferences.edit();
                     editor.putString("Username",Fieldusername);
                     editor.putLong("ID",UserID);
@@ -70,16 +66,19 @@ public class SignIn extends AppCompatActivity {
 
                 }
                 else if (user.size()==0){
-                    Toast.makeText(SignIn.this, "User not registered. Please register to Sign in!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignIn.this, "User not registered. " +
+                                    "Please register to Sign in!",
+                            Toast.LENGTH_SHORT).show();
                 }
                 else  if(Fieldpassword.isEmpty()||Fieldusername.isEmpty()){
-                    Toast.makeText(SignIn.this, "Fill all empty fields.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignIn.this, "Fill all empty fields.",
+                            Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(SignIn.this, "Username or password Incorrect!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignIn.this, "Username or password Incorrect!",
+                            Toast.LENGTH_SHORT).show();
 
                 }
-
             }
         });
     }
